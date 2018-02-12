@@ -45,7 +45,7 @@ public class SpringResourceTransformer implements ResourceTransformer {
 			"META-INF/spring.factories",
 			"META-INF/spring.schemas",
 			"META-INF/spring.handlers",
-			"META-INF/spring.toolinh"));
+			"META-INF/spring.tooling"));
 
 	private final Map<String, Map<String, String>> resources = new HashMap<>();
 
