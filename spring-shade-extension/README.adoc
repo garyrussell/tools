@@ -1,0 +1,41 @@
+=== spring-shade-extension
+
+Apache Maven Shade Plugin Extension to merge `META-INF/spring.handlers`, `META-INF/spring.schemas`, `META-INF/spring.factories`, `META-INF/spring.tooling`.
+
+Usage:
+
+[source, xml]
+----
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-shade-plugin</artifactId>
+    <version>2.3</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.maven</groupId>
+            <artifactId>spring-shade-extension</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    <configuration>
+        <createDependencyReducedPom>true</createDependencyReducedPom>
+        <createSourcesJar>false</createSourcesJar>
+        <transformers>
+            <transformer implementation="org.springframework.maven.resource.SpringResourceTransformer" />
+        </transformers>
+    </configuration>
+    <executions>
+        <execution>
+            <phase>package</phase>
+            <goals>
+                <goal>shade</goal>
+            </goals>
+            <configuration>
+                <finalName>yo-service</finalName>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+----
+
+Add the dependency to the plugin definition and the `transformer` to the `configuration`.
